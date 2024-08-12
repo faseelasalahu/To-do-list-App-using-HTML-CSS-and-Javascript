@@ -11,6 +11,11 @@ let TodoList = document.querySelector(".todo-list");
 
 TodoButton.addEventListener('click',addto);
 
+// add eventlistener to delete//
+
+TodoList.addEventListener('click',Del);
+
+
 //Add Function//
 
 function addto(e){
@@ -22,21 +27,50 @@ function addto(e){
 
      //create todo list//
 
-     const toLi = document.createElement('li')
+     const toLi = document.createElement('li');
 
-     e.preventDefault()
+     //e.preventDefault();
      
      toLi.classList.add('todoItems')
 
-     toLi.innerText =  TodoInput.value
+     toLi.innerText =  TodoInput.value;
 
-     todoDiv.appendChild(toLi)
+     todoDiv.appendChild(toLi);
+
+     
+
+
+     // trash button //
+
+     const trashbtn = document.createElement('button');
+     
+     trashbtn.classList.add('trash')
+
+     trashbtn.innerText = "Delete";
+
+     todoDiv.appendChild(trashbtn)
 
      TodoList.appendChild( todoDiv)
   
 
      //clear input//
-     TodoInput.value = ""
+     TodoInput.value = "";
      
+
+}
+
+// Function Delete//
+
+function Del(e){
+    const item = e.target;
+
+    if (item.classList[0]==='trash'){
+
+        const todo = item.parentElement;
+       
+       
+        todo.remove();
+
+    }
 
 }
